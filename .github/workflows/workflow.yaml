@@ -99,7 +99,7 @@ jobs:
     - name: Upload build assets
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}_${{ matrix.platform }}
+        name: ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}_obkSimulator_win32
         path: output/${{ needs.refs.outputs.version }}/obkSimulator_${{ needs.refs.outputs.version }}.zip
   build:
     name: Build
