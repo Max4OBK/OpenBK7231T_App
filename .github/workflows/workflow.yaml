@@ -151,7 +151,7 @@ jobs:
             output/${{ needs.refs.outputs.version }}/${{ matrix.platform }}_${{ needs.refs.outputs.version }}_OTA.bin.xz            
             output/${{ needs.refs.outputs.version }}/${{ matrix.platform }}_${{ needs.refs.outputs.version }}_OTA.bin.xz.ota
           if-no-files-found: warn
-  merge:
+  build_all_platforms_zip:
       runs-on: ubuntu-20.04
       needs: [refs, build, build2]
       steps:
@@ -174,8 +174,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           patterns: |
-                  ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}*
                   !${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}_all_platforms
+                  ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}*
           merge-multiple: true
           path: output/${{ needs.refs.outputs.version }}
       - name: Run Semantic Release
