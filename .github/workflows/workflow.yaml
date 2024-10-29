@@ -174,8 +174,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           patterns: |
-                  ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}*
                   !${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}_all_platforms
+                  ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}*
           merge-multiple: true
           path: output/${{ needs.refs.outputs.version }}
       - name: Run Semantic Release
