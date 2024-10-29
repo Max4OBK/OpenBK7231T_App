@@ -99,7 +99,7 @@ jobs:
     - name: Upload build assets
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}
+        name: ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}_${{ matrix.platform }}
         path: output/${{ needs.refs.outputs.version }}/obkSimulator_${{ needs.refs.outputs.version }}.zip
   build:
     name: Build
@@ -133,7 +133,7 @@ jobs:
       - name: Save build assets
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}
+          name: ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}_${{ matrix.platform }}
           path: |
             output/${{ needs.refs.outputs.version }}/OpenBK7231T_UA_${{ needs.refs.outputs.version }}.bin
             output/${{ needs.refs.outputs.version }}/OpenBK7231T_UG_${{ needs.refs.outputs.version }}.bin
