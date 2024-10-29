@@ -173,7 +173,8 @@ jobs:
       - name: Fetch build assets
         uses: actions/download-artifact@v4
         with:
-          pattern: ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}*
+          patterns: |
+                  ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}*
                   !${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}_all_platforms
           merge-multiple: true
           path: output/${{ needs.refs.outputs.version }}
