@@ -159,7 +159,7 @@ jobs:
             uses: actions/upload-artifact/merge@v4
             with:
               name: ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}_all_platforms
-              delete-merged: true
+              delete-merged: false
 
 
   release:
@@ -174,6 +174,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           pattern: ${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}*
+                  !${{ env.APP_NAME }}_${{ needs.refs.outputs.version }}_all_platforms
           merge-multiple: true
           path: output/${{ needs.refs.outputs.version }}
       - name: Run Semantic Release
